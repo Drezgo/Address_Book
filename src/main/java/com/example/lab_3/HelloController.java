@@ -1,6 +1,7 @@
 package com.example.lab_3;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,9 +32,14 @@ public class HelloController implements Initializable {
     private Button btnDel;
 
     @FXML
+    private Label label;
+
+    @FXML
     private TextField searchField;
     @FXML
     private Button btnFind;
+    @FXML
+    private Label labelCount;
 
     @FXML
     private TableColumn<Person, String> columnPIP;
@@ -55,16 +61,8 @@ public class HelloController implements Initializable {
     ObservableList<Person> filteredList = FXCollections.observableArrayList();
 
     @FXML
-    void deleteAlert(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Видалення");
+    void otherLabs(ActionEvent event) {
 
-        alert.setContentText("Ви впевненні, що хочете видалити запис? ");
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-
-        }
     }
 
     public void setNewStage(Stage newStage) {
@@ -82,19 +80,8 @@ public class HelloController implements Initializable {
         editDialogStage.initOwner(newStage);
 
         editDialogStage.showAndWait();
-
-//            Stage stage = new Stage();//???
-//            Scene scene = new Scene(fxmlLoaders.load(), 400, 100);
-//            stage.setScene(scene);
-//
-//            stage.setTitle("Додавання");
-//            stage.setMinWidth(400);
-//            stage.setMinHeight(100);
-//            stage.setResizable(false);
-//            stage.initModality(Modality.WINDOW_MODAL);
-//            stage.initOwner(btnAdd.getScene().getWindow());
-//            stage.show();
     }
+
     @FXML
     void openWindow(ActionEvent event) throws IOException, URISyntaxException {
         Button clickedButton = (Button) event.getSource();
@@ -115,8 +102,7 @@ public class HelloController implements Initializable {
                 }
                 break;
             case "btnDel":
-                addressBookImpl.delete((Person)  tableAddressBook.getSelectionModel().getSelectedItem());
-                filteredList.remove((Person)  tableAddressBook.getSelectionModel().getSelectedItem());
+                conformationAlert();
                 break;
         }
     }
@@ -126,6 +112,20 @@ public class HelloController implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    void conformationAlert() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Видалення");
+        alert.setContentText("Ви впевненні, що хочете видалити запис? ");
+
+        ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL); // Зберігаємо результат тут
+
+        if (result == ButtonType.OK) {
+            addressBookImpl.delete((Person) tableAddressBook.getSelectionModel().getSelectedItem());
+            filteredList.remove((Person) tableAddressBook.getSelectionModel().getSelectedItem());
+        }
+    }
+
 
     @FXML
     void fillText(ActionEvent event) {
@@ -144,6 +144,11 @@ public class HelloController implements Initializable {
         tableAddressBook.setItems(filteredList);
     }
 
+    private void updateCountLabel(){
+        labelCount.setText("Кількість записів: " + addressBookImpl.getPersonList().size());
+    }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -157,6 +162,13 @@ public class HelloController implements Initializable {
 
         columnPIP.setCellValueFactory(new PropertyValueFactory<Person, String>("PIP"));
         columnPhone.setCellValueFactory(new PropertyValueFactory<Person, String>("PHONE"));
+
+        addressBookImpl.getPersonList().addListener(new ListChangeListener<Person>() {
+            @Override
+            public void onChanged(Change<? extends Person> c) {
+                updateCountLabel();
+            }
+        });
 
 //        addressBookImpl.fillTestData();
         tableAddressBook.setItems(addressBookImpl.getPersonList());

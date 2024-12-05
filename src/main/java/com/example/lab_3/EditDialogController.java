@@ -10,12 +10,6 @@ import javafx.stage.Stage;
 public class EditDialogController {
 
     @FXML
-    private Button btnCancel;
-
-    @FXML
-    private Button btnOK;
-
-    @FXML
     private TextField txtPIP;
 
     @FXML
