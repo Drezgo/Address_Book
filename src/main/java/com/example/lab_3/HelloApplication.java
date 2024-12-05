@@ -13,24 +13,24 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 600);
         stage.setTitle("Адресна книга");
+        HelloController controller = fxmlLoader.getController();
+        controller.setNewStage(stage);
         stage.setScene(scene);
         stage.setMinWidth(500);
         stage.setMinHeight(600);
         stage.setResizable(true);
         stage.show();
 
-
-
-        testData();
+//        testData();
     }
 
     public static void main(String[] args) {
         launch();
     }
 
-    private void testData() {
-        CollectionAddressBook addressBook = new CollectionAddressBook();
-        addressBook.fillTestData();
-        addressBook.print();
-    }
+//    private void testData() {
+//        CollectionAddressBook addressBook = new CollectionAddressBook();
+//        addressBook.fillTestData();
+//        addressBook.print();
+//    }
 }

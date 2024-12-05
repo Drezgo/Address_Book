@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="93.0" prefWidth="381.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="93.0" prefWidth="381.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab_3.EditDialogController">
    <center>
       <VBox prefHeight="115.0" prefWidth="458.0" BorderPane.alignment="CENTER">
          <children>
@@ -43,12 +43,12 @@
    <right>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnOK" mnemonicParsing="false" prefWidth="60.0" text="ОК">
+            <Button fx:id="btnOK" mnemonicParsing="false" onAction="#actionSave" prefWidth="60.0" text="ОК">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnCancel" mnemonicParsing="false" prefWidth="60.0" text="Відміна">
+            <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#actionClose" prefWidth="60.0" text="Відміна">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>

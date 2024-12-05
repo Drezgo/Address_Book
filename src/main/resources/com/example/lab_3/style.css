@@ -1,0 +1,13 @@
+.main{
+    -fx-background-color: linear-gradient(from 30% 0% to 100% 100%,
+            rgba(127,145,198,1) 12%,
+            rgba(255,255,255,1) 59%);
+}
+
+.button {
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-border-style: solid;
+    -fx-background-color: #97b8fa;
+}
