@@ -20,17 +20,10 @@ public class HelloApplication extends Application {
         stage.setMinHeight(600);
         stage.setResizable(true);
         stage.show();
-
-//        testData();
     }
 
     public static void main(String[] args) {
         launch();
     }
 
-//    private void testData() {
-//        CollectionAddressBook addressBook = new CollectionAddressBook();
-//        addressBook.fillTestData();
-//        addressBook.print();
-//    }
 }

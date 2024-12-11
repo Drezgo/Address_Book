@@ -48,7 +48,9 @@ public class HelloController implements Initializable {
     @FXML
     private TableView<Person> tableAddressBook;
 
+    private CheckBoxesController checkBoxesController;
     private Stage newStage;
+    private Stage newStage2;
     private Stage editDialogStage;
     private Parent root;
     private EditDialogController editDialogController;
@@ -62,7 +64,19 @@ public class HelloController implements Initializable {
 
     @FXML
     void otherLabs(ActionEvent event) {
+        try {
+            // Завантаження FXML
+            FXMLLoader loaderCheck = new FXMLLoader(getClass().getResource("CheckBoxes.fxml"));
+            Parent rootCheck = loaderCheck.load();
 
+            // Створення нового вікна
+            Stage newStage = new Stage();
+            newStage.setTitle("Нове вікно");
+            newStage.setScene(new Scene(rootCheck));
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setNewStage(Stage newStage) {
@@ -173,4 +187,5 @@ public class HelloController implements Initializable {
 //        addressBookImpl.fillTestData();
         tableAddressBook.setItems(addressBookImpl.getPersonList());
     }
+
 }

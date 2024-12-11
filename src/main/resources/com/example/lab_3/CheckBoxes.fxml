@@ -3,19 +3,88 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab_3.CheckBoxesController">
+<HBox fx:id="sceneHbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lab_3.CheckBoxesController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="200.0">
+      <VBox prefHeight="456.0" prefWidth="200.0">
          <children>
+            <MenuBar prefHeight="26.0" prefWidth="244.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="New File" />
+                        <Menu mnemonicParsing="false" text="Open File">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="file01" />
+                              <MenuItem mnemonicParsing="false" text="file02" />
+                              <MenuItem mnemonicParsing="false" text="file03" />
+                          </items>
+                        </Menu>
+                        <CheckMenuItem mnemonicParsing="false" text="Simple mode" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <Menu mnemonicParsing="false" text="Recent files">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="1111" />
+                              <MenuItem mnemonicParsing="false" text="22222" />
+                              <MenuItem mnemonicParsing="false" text="33333" />
+                              <MenuItem mnemonicParsing="false" text="44444" />
+                              <MenuItem mnemonicParsing="false" text="555555" />
+                              <MenuItem mnemonicParsing="false" text="66666" />
+                          </items>
+                        </Menu>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#exitButton" text="exit">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="View">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Show" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Tools">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="tools" />
+                        <MenuItem mnemonicParsing="false" text="More tools" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Help">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="help" />
+                     </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
+            <TextField fx:id="textField">
+               <contextMenu>
+                  <ContextMenu fx:id="" onAction="#toggleContextText">
+                    <items>
+                        <RadioMenuItem fx:id="first" mnemonicParsing="false" text="Add random text" />
+                        <RadioMenuItem fx:id="second" mnemonicParsing="false" text="Clear" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
+            </TextField>
             <Label text="CheckBox">
                <font>
                   <Font name="Arial Bold Italic" size="26.0" />
@@ -29,32 +98,32 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <CheckBox mnemonicParsing="false" text="Брянська область">
+            <CheckBox fx:id="ChB1" mnemonicParsing="false" text="Брянська область">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </CheckBox>
-            <CheckBox mnemonicParsing="false" text="Московська область">
+            <CheckBox fx:id="ChB2" mnemonicParsing="false" text="Московська область">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </CheckBox>
-            <CheckBox mnemonicParsing="false" text="Курська область">
+            <CheckBox fx:id="ChB3" mnemonicParsing="false" text="Курська область">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </CheckBox>
-            <CheckBox mnemonicParsing="false" text="Калінінградська область">
+            <CheckBox fx:id="ChB4" mnemonicParsing="false" text="Калінінградська область">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </CheckBox>
-            <Button mnemonicParsing="false" text="Перевірити">
+            <Button mnemonicParsing="false" onAction="#checkBoxAnswer" text="Перевірити">
                <VBox.margin>
                   <Insets left="40.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Label prefHeight="34.0" prefWidth="202.0" text="Спробуй" wrapText="true">
+            <Label fx:id="lblTrueAnswer" prefHeight="135.0" prefWidth="160.0" text="Спробуй" wrapText="true">
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </VBox.margin>
@@ -76,17 +145,17 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <ChoiceBox accessibleRole="CHECK_BOX" prefWidth="150.0">
+            <ChoiceBox fx:id="choiceB" accessibleRole="CHECK_BOX" prefWidth="150.0">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </ChoiceBox>
-            <Button mnemonicParsing="false" text="Перевірити">
+            <Button mnemonicParsing="false" onAction="#choiceBoxAnswer" text="Перевірити">
                <VBox.margin>
                   <Insets left="40.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Label prefHeight="34.0" prefWidth="202.0" text="Спробуй" wrapText="true">
+            <Label fx:id="lblAnwerChoice" prefHeight="34.0" prefWidth="202.0" text="Спробуй" wrapText="true">
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </VBox.margin>
@@ -108,13 +177,16 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <ComboBox prefWidth="150.0" promptText="Виберіть" />
-            <Button mnemonicParsing="false" text="Перевірити">
+            <ComboBox fx:id="comboBox" prefWidth="150.0" promptText="Виберіть">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin></ComboBox>
+            <Button mnemonicParsing="false" onAction="#comboBoxPressed" text="Перевірити">
                <VBox.margin>
                   <Insets left="40.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Label prefHeight="34.0" prefWidth="202.0" text="Спробуй" wrapText="true">
+            <Label fx:id="lblAnwerCombo" prefHeight="34.0" prefWidth="202.0" text="Спробуй" wrapText="true">
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </VBox.margin>
@@ -136,27 +208,27 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <RadioButton mnemonicParsing="false" text="24">
+            <RadioButton fx:id="radio24" mnemonicParsing="false" text="24">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </RadioButton>
-            <RadioButton mnemonicParsing="false" text="27">
+            <RadioButton fx:id="radio27" mnemonicParsing="false" text="27">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </RadioButton>
-            <RadioButton mnemonicParsing="false" text="21">
+            <RadioButton fx:id="radio21" mnemonicParsing="false" text="21">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </RadioButton>
-            <Button mnemonicParsing="false" text="Перевірити">
+            <Button mnemonicParsing="false" onAction="#RadioAnswer" text="Перевірити">
                <VBox.margin>
                   <Insets left="40.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Label prefHeight="34.0" prefWidth="202.0" text="Спробуй" wrapText="true">
+            <Label fx:id="lblRadio" prefHeight="34.0" prefWidth="202.0" text="Спробуй" wrapText="true">
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </VBox.margin>
