@@ -1,10 +1,16 @@
 package com.example.lab_3;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class CheckBoxesController {
     @FXML
@@ -123,6 +129,24 @@ public class CheckBoxesController {
             textField.setText("RandomText");
         else if (toggleContextText.getSelectedToggle().equals(this.second))
             textField.setText(null);
+    }
+
+
+
+
+
+//    todo: ______7_лабораторна______
+
+    @FXML
+    void openDatePicker(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("pickersANDplayers.fxml"));
+        Parent root = loader.load();
+
+        // Створення нового вікна (Stage)
+        Stage newStage = new Stage();
+        newStage.setTitle("Нове вікно");
+        newStage.setScene(new Scene(root));
+        newStage.show();
     }
 
 
